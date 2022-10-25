@@ -1,0 +1,140 @@
+#kt_header{
+    background: #007C3C !important;
+}
+.menu-logo{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+    padding: 20px;
+}
+
+.white{
+    color:#fff !important;
+}
+.menu-title:hover{
+    color:#fff;
+}
+
+.card-header .card-title{
+    font-weight: bold !important;
+    font-size: 20px !important;
+    color: #3F4254 !important;
+}
+.card-body .table thead tr:first-child{
+    background: #EFF2F5;
+}
+.card-body .table tr th{
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+}
+.card-body .table tr td{
+    text-align: center;
+}
+.card>hr{
+    color: #E4E6EF !important;
+    margin: 0px;
+}
+
+.accountants{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.accountants .counter{
+    border: 1px solid #E4E6EF;
+    border-radius: 6px;
+    padding: 20px 60px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.accountants .counter p{
+    margin: 0px;
+}
+
+.accountants .counter .text-counter1,.accountants .counter .text-counter2,.accountants .counter .text-counter3{
+    font-size:16px;
+    text-align: center;
+}
+.accountants .counter .text-counter1{
+    color: #00A3FF;
+}
+.accountants .counter .text-counter2 {
+    color: #50CD89;
+}
+.accountants .counter .text-counter3{
+    color: #F1416C;
+}
+.accountants .counter .text-counter-number {
+    font-size:24px;
+    font-weight: bold;
+    text-align: center;
+}
+.space-between{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+}
+.card .card-header {
+    min-height: inherit;
+}
+
+.info-servico{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.info-servico .info-title{
+    font-size:16px;
+    color: #7E8299;
+}
+.info-servico .info-resp{
+    font-size:18px;
+}
+.menu-state-bg .menu-item.hover:not(.here) > .menu-link:not(.disabled):not(.active):not(.here), .menu-state-bg .menu-item:not(.here) .menu-link:hover:not(.disabled):not(.active):not(.here) {
+    background: #14864C;
+}
+.menu-state-bg .menu-item.show > .menu-link {
+    background: #14864C;
+}
+.menu-link:hover{
+    background: #14864C;
+}
+.menu-link.sub:hover{
+    background-color: rgba(245,248,250,.8) !important;
+}
+
+.table.crud tr td{
+    font-size: 16px;
+}
+
+span.active{
+    background-color: #E8FFF3;
+    color: #50CD89;
+    padding: 5px;
+    font-weight: bold;
+}
+span.inactive{
+    background-color: #FFF5F8;
+    color:#F1416C;
+    padding: 5px;
+    font-weight: bold;
+}
+.color-green{
+    color:#50CD89;
+    font-weight: bold;
+}
+.color-yellow{
+    color:#F1BC00;
+    font-weight: bold;
+}
+.color-red{
+    color:#F1416C;
+    font-weight: bold;
+}
