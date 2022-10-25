@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\InstaladorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,5 +13,5 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('instalador', [App\Http\Controllers\InstaladorController::class, 'index'])->name('');
+Route::get('/', function () {return redirect()->route('index');});
+Route::get('/instalador', [InstaladorController::class, 'index'])->name('index');
