@@ -1,0 +1,7 @@
+.instalador-accordion{
+    padding: 20px 0px 20px 30px;
+}
+
+.instalador-accordion .instalador-item{
+    cursor: pointer;
+}
