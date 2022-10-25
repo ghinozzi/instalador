@@ -10,7 +10,7 @@ class __NomeModel__ extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $table = '__Tabela__';
+    protected $table = __Tabela__;
     protected $fillable = [__Campos__];
     protected $dates = [__Datas__];
 

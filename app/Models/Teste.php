@@ -10,7 +10,8 @@ class Teste extends Model
     use HasFactory;
     use SoftDeletes;
 
-    protected $fillable = array('NmGrupo','FlAdmin');
-    protected $casts = ['FlAdmin' => "boolean"];
+    protected $table = 'teste';
+    protected $fillable = ['nome','telefone','email','nascimento'];
+    protected $dates = ['nascimento'];
 
 }

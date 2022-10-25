@@ -30,7 +30,6 @@ class CrudRequirements extends Command
     {
         Try{
             //Gerando assets
-            /*
             $origem = app_path()."\Generator\assets";
             $destino = public_path()."\assets";
 
@@ -40,11 +39,13 @@ class CrudRequirements extends Command
             }else{
                 $this->error($mover);
             }
-            */
             //Gerar arquivo de layout
+
+            /*
             $base = app_path()."\Generator\Views\app.blade.php";
             $destino = base_path()."\resources\views\layouts\app.blade.php";
             InstaladorFunctions::gerarArquivo($base,$destino);
+            */
 
 
         }catch(\Exception $e){

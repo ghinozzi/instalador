@@ -12,7 +12,7 @@ class Crud extends Command
      *
      * @var string
      */
-    protected $signature = 'crud-generate {nome}';
+    protected $signature = 'crud-generate {nome} {tabela} {campos} {data}';
 
     /**
      * The console command description.
@@ -28,9 +28,17 @@ class Crud extends Command
      */
     public function handle()
     {
-        if(CriarModel::dispatch($this->argument('nome'))){
+        if(CriarModel::dispatch($this->argument('nome'),$this->argument('campos'),$this->argument('data'),$this->argument('tabela'))){
             $this->line('Modelo gerado com sucesso');
         }
+        /*
+        if(CriarController::dispatch($this->argument('nome'))){
+            $this->line('Modelo gerado com sucesso');
+        }
+        if(CriarViews::dispatch($this->argument('nome'))){
+            $this->line('Modelo gerado com sucesso');
+        }
+        */
 
         return Command::SUCCESS;
     }

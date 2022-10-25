@@ -43,11 +43,12 @@ class CriarModel implements ShouldQueue
     {
         $codigo = file_get_contents(app_path().'\Generator\Models\Model.php');
 
+        $campos = $this->fielsFormat($this->campos);
         $replaces = [
-            'NomeModel'=>$this->nomeModel,
-            'Campos'=>$this->campos,
-            'Tabela'=>$this->tabela,
-            'Datas'=>$this->datas
+            'NomeModel'=> $this->nomeModel,
+            'Campos'=> $campos,
+            'Tabela'=> "'".$this->tabela."'",
+            'Datas'=> "'".$this->datas."'"
         ];
 
         $codigo = $this->replaceContents($codigo,$replaces);
@@ -58,7 +59,13 @@ class CriarModel implements ShouldQueue
 
     }
 
-    public function replaceContents($codigo,$replaces){
+    protected function fielsFormat($fields){
+        $array = explode(',',$fields);
+
+        return "'".implode("','",$array)."'";
+    }
+
+    protected function replaceContents($codigo,$replaces){
         foreach ($replaces as $search => $replace)
         {
             $codigo = str_replace('__'.$search.'__' , $replace, $codigo);
