@@ -15,7 +15,6 @@
                 </div>
                 <div class="accordion" id="accordionExample">
                     <!-- comentario -->
-                    @php $CountRelation = 0; @endphp    
                     @foreach($tables as $table)
                         <div class="accordion-item instalador-accordion">
                             <div class="row">
@@ -38,7 +37,7 @@
                                             <th>Relação</th>
                                             <th>Campo Relação</th>
                                         </tr>
-                                        
+
                                         @foreach($table["column"] as $column)
                                             <tr>
                                                 <td>{{$column["name"]}}</th>
@@ -53,7 +52,7 @@
                                                     </select>
                                                 </th>
                                                 <td>
-                                                    <select id="relation{{$CountRelation}}" onchange='teste({{$CountRelation}})'>
+                                                    <select class='select-table' data-column="{{$table['table'].'-'.$column["name"]}}">
                                                         <option value="">Selecione uma tabela</option>
                                                         @foreach($tables as $optionTable)
                                                             @if($table["table"] != $optionTable["table"])
@@ -63,23 +62,11 @@
                                                     </select>
                                                 </td>
                                                 <td>
-                                                    <select id='teste'>
+                                                    <select id='columns-{{$table['table'].'-'.$column["name"]}}'>
                                                         <option value="">Selecione um campo</option>
-                                                        @php 
-                                                            $countTable = 0; 
-                                                            $countColumn = 0;
-                                                        @endphp
-                                                        @foreach($tables as $optionTable)
-                                                            @foreach($optionTable["column"] as $optionColumn)
-                                                                <option id="option{{$CountRelation}}" value="{{$CountRelation}}">{{$optionColumn['name']}}</option>
-                                                                @php $countColumn ++; @endphp
-                                                            @endforeach
-                                                            @php $countTable ++;@endphp
-                                                        @endforeach
                                                     </select>
                                                 </td>
                                             </tr>
-                                            @php $CountRelation ++; @endphp
                                         @endforeach
                                     </table>
                                 </div>
@@ -91,4 +78,40 @@
             </div>
         </div>
     </div>
+@endsection
+@section('page-script')
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $('.select-table').change(function(){
+            let column = $(this).attr('data-column');
+            let tableSelect = $(this).val();
+            $.ajax({
+                headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                type: "POST",
+                url: "{{route('instalador.getColumnsTable')}}",
+                data: "table="+tableSelect,
+                dataType: "json",
+                success: function(result){
+                    let response = jsonToOptions(result,'Field','Field');
+                    console.log(response);
+                    $('#columns-'+column).html(response);
+                }
+            });
+        });
+    });
+        function teste(a){
+            $('#teste option').show();
+                var termo = $('#relation'+a).val().toUpperCase();
+                alert(termo);
+                termo = "MIGRATIONS";
+
+                $('#teste option').each(function() {
+                if($(this).val().toUpperCase().indexOf(termo) === -1) {
+                    $(this).hide();
+                }
+            });
+        }
+  </script>
 @endsection

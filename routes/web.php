@@ -14,4 +14,5 @@ use App\Http\Controllers\InstaladorController;
 |
 */
 Route::get('/', function () {return redirect()->route('index');});
-Route::get('/instalador', [InstaladorController::class, 'index'])->name('index');
+Route::get('/instalador', [InstaladorController::class, 'index'])->name('instalador.index');
+Route::post('/getColumnsTable', [InstaladorController::class, 'getColumnsTable'])->name('instalador.getColumnsTable');
