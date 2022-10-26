@@ -12,7 +12,7 @@ class InstaladorController extends Controller
         $show_tables = DB::select('show tables;');
         foreach($show_tables as $table){
             $table = $table[array_key_first($table=(array)$table)];
-            $show_column = DB::select('SHOW COLUMNS FROM '.$table);
+            $show_column = DB::select('desc '.$table.';');
             //var_dump($show_column);
             foreach($show_column as $coluna){
                 $column[] = [
@@ -25,9 +25,9 @@ class InstaladorController extends Controller
                 "table"=>$table,
                 "column"=>$column
             ];
-            
+            $column = false;
         }
-        
+        /* dd($tables); */
         return view('instalador.index',compact('tables'));
     }
 }

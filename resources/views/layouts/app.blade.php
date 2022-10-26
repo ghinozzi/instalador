@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
     <!--end::Fonts-->
     <script src="{{ asset('assets/js/sweetalert2.all.js') }}"></script>
+    <link rel="stylesheet" href="css/app.css">
     <!--begin::Page Vendor Stylesheets(used by this page)-->
     <link href="{{ asset('assets/plugins/custom/datatables/datatables.bundle.css') }}" rel="stylesheet"
         type="text/css" />
@@ -2304,6 +2305,7 @@
     <!--end::Page Vendors Javascript-->
     <script src="{{ asset('assets/js/jquery.mask.js') }}"></script>
     <script src="{{ asset('assets/js/script.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}" ></script>
 </body>
 
 </html>
