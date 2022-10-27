@@ -14,4 +14,5 @@ class __NomeModel__ extends Model
     protected $fillable = [__Campos__];
     protected $dates = [__Datas__];
 
+
 }

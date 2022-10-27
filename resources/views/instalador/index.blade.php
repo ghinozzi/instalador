@@ -15,7 +15,7 @@
                 </div>
                 <div class="accordion" id="accordionExample">
                     <!-- comentario -->
-                    <form action="create" method="post">
+                    <form action="{{route('instalador.create')}}" method="post">
                         @csrf
                         @foreach($tables as $table)
                             <div class="accordion-item instalador-accordion">
@@ -23,9 +23,9 @@
                                     <div class="col-md-3 instalador-item"><a  data-bs-toggle="collapse" data-bs-target='#{{$table["table"]}}'>{{$table["table"]}}</a></div>
                                     <div class="col-md-9">
                                         <div class='instalador-options'>
-                                            <input name="{{$table['table']}}model" type="checkbox"> <label for="">Model</label>
-                                            <input name="{{$table['table']}}controller" type="checkbox"> <label for="">Controller</label>
-                                            <input name="{{$table['table']}}view" type="checkbox"> <label for="">View</label>
+                                            <input name="models[{{$table['table']}}]" type="checkbox"> <label for="">Model</label>
+                                            <input name="controllers[{{$table['table']}}]" type="checkbox"> <label for="">Controller</label>
+                                            <input name="views[{{$table['table']}}]" type="checkbox"> <label for="">View</label>
                                         </div>
                                     </div>
                                 </div>
@@ -36,6 +36,8 @@
                                             <tr>
                                                 <th>Campo</th>
                                                 <th>Tipo</th>
+                                                <th>Not Null</th>
+                                                <th>Lista</th>
                                                 <th>Relação</th>
                                                 <th>Campo Relação</th>
                                             </tr>
@@ -43,8 +45,8 @@
                                                 <tr>
                                                     <td>{{$column["name"]}}</td>
                                                     <td>
-                                                        <select name="type-{{$table['table']}}-{{ $column['name']}}" class="select-type" data-type="{{$table['table'].'-'.$column["name"]}}">
-                                                            <option>Selecione</option>
+                                                        <select name="table[{{$table['table']}}][{{ $column['name']}}][type]" class="select-type" data-type="{{$table['table'].'-'.$column["name"]}}">
+                                                            <option value="">Selecione</option>
                                                             <option value="texto">Texto</option>
                                                             <option value="data">Data</option>
                                                             <option value="texto-longo">Texto Longo</option>
@@ -52,8 +54,10 @@
                                                             <option value="select">Select</option>
                                                         </select>
                                                     </td>
+                                                    <td></td>
+                                                    <td></td>
                                                     <td>
-                                                        <select name="relation-table-{{$table['table']}}-{{ $column['name']}}" style="display: none;" class='select-table type-selected{{$table['table'].'-'.$column["name"]}}' data-column="{{$table['table'].'-'.$column["name"]}}">
+                                                        <select name="table[{{$table['table']}}][{{ $column['name']}}][belongsTo]" style="display: none;" class='select-table type-selected{{$table['table'].'-'.$column["name"]}}' data-column="{{$table['table'].'-'.$column["name"]}}">
                                                             <option value="">Selecione uma tabela</option>
                                                             @foreach($tables as $optionTable)
                                                                 @if($table["table"] != $optionTable["table"])
@@ -63,8 +67,8 @@
                                                         </select>
                                                     </td>
                                                     <td>
-                                                        <select name="relation-column-{{$table['table']}}-{{ $column['name']}}" style="display: none;" class="type-selected{{$table['table'].'-'.$column["name"]}}" id='columns-{{$table['table'].'-'.$column["name"]}}'>
-                                                            <option>Selecione um campo</option>
+                                                        <select name="table[{{$table['table']}}][{{ $column['name']}}][reference]" style="display: none;" class="type-selected{{$table['table'].'-'.$column["name"]}}" id='columns-{{$table['table'].'-'.$column["name"]}}'>
+                                                            <option value="">Selecione um campo</option>
                                                         </select>
                                                     </td>
                                                 </tr>
@@ -74,7 +78,7 @@
                                 </div>
                             </div><br>
                         @endforeach
-                        <button type="submit" href="#" class="btn btn-sm fw-bold btn-primary">Criar Template</button>
+                        <button type="submit" class="btn btn-sm fw-bold btn-primary">Criar Template</button>
                     </form>
                     <!-- comentario -->
                 </div>
@@ -86,11 +90,11 @@
     <script type="text/javascript">
     $(document).ready(function(){
         $('.select-type').change(function(){
-            
+
             let attr = $(this).attr('data-type');
             let typeSelected = $(this).val();
             if(typeSelected == "select"){
-                $('.type-selected'+attr).show();
+                $('.type-selected'+attr).show(500);
             }else{
                 $('.type-selected'+attr).hide();
             }
