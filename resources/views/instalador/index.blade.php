@@ -23,9 +23,9 @@
                                     <div class="col-md-3 instalador-item"><a  data-bs-toggle="collapse" data-bs-target='#{{$table["table"]}}'>{{$table["table"]}}</a></div>
                                     <div class="col-md-9">
                                         <div class='instalador-options'>
-                                            <input name="models[{{$table['table']}}]" type="checkbox"> <label for="">Model</label>
-                                            <input name="controllers[{{$table['table']}}]" type="checkbox"> <label for="">Controller</label>
-                                            <input name="views[{{$table['table']}}]" type="checkbox"> <label for="">View</label>
+                                            <input name="models[{{$table['table']}}]" checked type="checkbox"> <label for="">Model</label>
+                                            <input name="controllers[{{$table['table']}}]" checked type="checkbox"> <label for="">Controller</label>
+                                            <input name="views[{{$table['table']}}]" checked type="checkbox"> <label for="">View</label>
                                         </div>
                                     </div>
                                 </div>

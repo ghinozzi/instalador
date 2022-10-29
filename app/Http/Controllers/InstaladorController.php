@@ -25,8 +25,11 @@ class InstaladorController extends Controller
 
     public function create(Request $request){
         //crud
+        $gerarRoutes = false;
+
         //GeraModelos
         if(!empty($request->models)){
+            $gerarRoutes = true;
             foreach($request->models as $table => $condition){
                 if($condition){
                     InstaladorService::generateModel($table,array_keys($request->table[$table]));
@@ -35,6 +38,7 @@ class InstaladorController extends Controller
         }
         //GeraControllers
         if(!empty($request->controllers)){
+            $gerarRoutes = true;
             foreach($request->controllers as $table => $condition){
                 if($condition){
                     InstaladorService::generateController($table);
@@ -43,12 +47,22 @@ class InstaladorController extends Controller
         }
         //GeraViews
         if(!empty($request->views)){
+            $gerarRoutes = true;
             foreach($request->views as $table => $condition){
                 if($condition){
                     InstaladorService::generateViews($table,array_keys($request->table[$table]));
                 }
             }
         }
-         //GeraRotas
+         //GeraRotas.
+         if(!empty($request->views) || !empty($request->controllers) || !empty($request->models)){
+            $gerarRoutes = true;
+            foreach($request->table as $table => $condition){
+                if($condition){
+                    InstaladorService::generateRoute($table);
+                    InstaladorService::generateMenuLink($table);
+                }
+            }
+        }
     }
 }

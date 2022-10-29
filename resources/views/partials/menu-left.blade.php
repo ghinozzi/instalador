@@ -38,21 +38,14 @@
             data-kt-scroll-dependencies="#kt_aside_logo, #kt_aside_footer" data-kt-scroll-wrappers="#kt_aside_menu"
             data-kt-scroll-offset="0">
             <!--begin::Menu-->
-            <div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500"
-                id="#kt_aside_menu" data-kt-menu="true" data-kt-menu-expand="false">
+            <div class="menu menu-column menu-title-gray-800 menu-state-title-primary menu-state-icon-primary menu-state-bullet-primary menu-arrow-gray-500" id="#kt_aside_menu" data-kt-menu="true" data-kt-menu-expand="false">
                 <div class="menu-item">
                     <div class="menu-content pt-8 pb-2">
                         <span class="menu-section text-muted text-uppercase fs-8 ls-1">Titulo</span>
                     </div>
                 </div>
-                <div class="menu-item">
-                    <a class="menu-link" href="../../demo1/dist/pages/user-profile/projects.html">
-                        <span class="menu-bullet">
-                            <span class="bullet bullet-dot"></span>
-                        </span>
-                        <span class="menu-title">Link</span>
-                    </a>
-                </div>
+
+                @include('partials.menu-links')
 
             </div>
             <!--end::Menu-->

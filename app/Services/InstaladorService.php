@@ -36,7 +36,7 @@ class InstaladorService
             $model = new NewModel($table,$campos);
 
             if($model->criar()){
-                echo 'Model criado com sucesso';
+                echo 'Model criado com sucesso!<br>';
             }
         }catch(\Exception $e){
             dd($e->getMessage());
@@ -74,5 +74,33 @@ class InstaladorService
 
         //Gerar update
 
+    }
+
+    static function generateRoute($table){
+        Try{
+            $datas = "";
+            $route = new NewRoute($table);
+
+            if($route->criar() == TRUE){
+                echo 'Route criada com sucesso!';
+            }else{
+                echo 'Route já existe!';
+            }
+        }catch(\Exception $e){
+            dd($e->getMessage());
+        }
+    }
+    static function generateMenuLink($table){
+        Try{
+            $MenuLink = new NewMenuLink($table);
+
+            if($MenuLink->criar() == TRUE){
+                echo 'Menu-link criado com sucesso!';
+            }else{
+                echo 'Menu-link já existe!';
+            }
+        }catch(\Exception $e){
+            dd($e->getMessage());
+        }
     }
 }
