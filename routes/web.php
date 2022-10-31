@@ -1,36 +1,32 @@
 <?php
-
+/*Atenção: apagar comentarios pode impedir o funcionamento do instalador*/
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\usuariosController;
+use App\Http\Controllers\turmasController;
+use App\Http\Controllers\tipo_usuarioController;
 use App\Http\Controllers\InstaladorController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 Route::get('/', function () {return redirect()->route('instalador.index');});
 Route::post('/getColumnsTable', [InstaladorController::class, 'getColumnsTable'])->name('instalador.getColumnsTable');
 
 Route::prefix('instalador')->group(function () {
     Route::get('/', [InstaladorController::class, 'index'])->name('instalador.index');
     Route::post('/create', [InstaladorController::class, 'create'])->name('instalador.create');
-    
+
 });
 
-
-Route::prefix('nametable')->group(function () {
-    Route::get('/', [nametableController::class, 'index'])->name('nametable.index');
-    Route::get('/edit', [nametableController::class, 'edit'])->name('nametable.edit');
-    Route::get('/add', [nametableController::class, 'add'])->name('nametable.add');
+Route::prefix('tipo_usuario')->group(function () {
+    Route::get('/', [tipo_usuarioController::class, 'index'])->name('tipo_usuario.index');
+    Route::get('/edit', [tipo_usuarioController::class, 'edit'])->name('tipo_usuario.edit');
+    Route::get('/create', [tipo_usuarioController::class, 'create'])->name('tipo_usuario.create');
 });
-Route::prefix('Usuario')->group(function () {
-    Route::get('/', [UsuarioController::class, 'index'])->name('Usuario.index');
-    Route::get('/edit', [UsuarioController::class, 'edit'])->name('Usuario.edit');
-    Route::get('/add', [UsuarioController::class, 'add'])->name('Usuario.add');
+Route::prefix('turmas')->group(function () {
+    Route::get('/', [turmasController::class, 'index'])->name('turmas.index');
+    Route::get('/edit', [turmasController::class, 'edit'])->name('turmas.edit');
+    Route::get('/create', [turmasController::class, 'create'])->name('turmas.create');
+});
+Route::prefix('usuarios')->group(function () {
+    Route::get('/', [usuariosController::class, 'index'])->name('usuarios.index');
+    Route::get('/edit', [usuariosController::class, 'edit'])->name('usuarios.edit');
+    Route::get('/create', [usuariosController::class, 'create'])->name('usuarios.create');
 });

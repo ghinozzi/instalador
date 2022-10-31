@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Dominio;
+namespace App\Services;
 
-class Fields
+class Field
 {
     protected $typeFields = [
         'texto pequeno',
@@ -15,12 +15,23 @@ class Fields
         'dinheiro',
         'arquivo',
         'imagem'];
+
     protected $name;
+    protected $title;
     protected $type;
 
-    function __construct($name,$type){
+    function __construct($name,$title,$type = null){
         $this->name = $name;
+        $this->title = $title;
         $this->type = $type;
+    }
+
+    function getTableHeader(){
+        return "<th>".$this->title."</th>";
+    }
+
+    function getTableField(){
+        return "<td>{{\$d->".$this->name."}}</td>";
     }
 
 }

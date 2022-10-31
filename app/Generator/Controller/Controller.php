@@ -9,7 +9,7 @@ class __NomeModel__Controller extends Controller
 {
     public function index()
     {
-        $data = __NomeModel__::orderBy('id asc')->get();
+        $data = __NomeModel__::orderBy('id','asc')->get();
         return view('__NomePasta__.index',compact('data'));
     }
 

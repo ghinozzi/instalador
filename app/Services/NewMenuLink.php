@@ -7,13 +7,16 @@ use App\Services\Utils;
 class NewMenuLink
 {
     protected $tabela;
-    public function __construct($tabela){
-        $this->tabela = ucfirst($tabela);
+    protected $plural;
+    public function __construct($tabela,$plural){
+        $this->tabela = $tabela;
+        $this->plural = $plural;
     }
     public function criar(){
         $codigo = file_get_contents(app_path().'\GeneratorLayout\views\menu.php');
         $replaces = [
-            'tablename'=> "".$this->tabela.""
+            'TableName'=> $this->tabela,
+            'Plural'=>$this->plural
         ];
         $codigo = Utils::replaceContents($codigo,$replaces);
 
@@ -30,6 +33,6 @@ class NewMenuLink
             }
         }
 
-        
+
     }
 }

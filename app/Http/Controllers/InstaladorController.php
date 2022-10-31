@@ -50,19 +50,21 @@ class InstaladorController extends Controller
             $gerarRoutes = true;
             foreach($request->views as $table => $condition){
                 if($condition){
-                    InstaladorService::generateViews($table,array_keys($request->table[$table]));
+                    InstaladorService::generateViews($table,$request->table[$table],$request->singular,$request->plural);
                 }
             }
         }
          //GeraRotas.
-         if(!empty($request->views) || !empty($request->controllers) || !empty($request->models)){
+
+        if(!empty($request->views) || !empty($request->controllers) || !empty($request->models)){
             $gerarRoutes = true;
             foreach($request->table as $table => $condition){
                 if($condition){
                     InstaladorService::generateRoute($table);
-                    InstaladorService::generateMenuLink($table);
+                    InstaladorService::generateMenuLink($table,$request->plural);
                 }
             }
         }
+
     }
 }

@@ -1,9 +1,9 @@
-<div data-kt-menu-trigger="click" class="menu-item menu-accordion
-    @if(Route::is('nametable.index') || Route::is('nametable.add') || Route::is('nametable.edit'))
+<div class="menu-item
+    @if(Route::is('TableName.index') || Route::is('TableName.add') || Route::is('TableName.edit'))
         show
     @endif
     ">
-    <span class="menu-link">
+    <a class="menu-link" href="{{route('__TableName__.index')}}">
         <span class="menu-icon">
             <!--begin::Svg Icon | path: icons/duotune/communication/com005.svg-->
             <span class="svg-icon svg-icon-2">
@@ -14,35 +14,6 @@
             </span>
             <!--end::Svg Icon-->
         </span>
-        <span class="menu-title">__tablename__</span>
-        <span class="menu-arrow"></span>
-    </span>
-    <div class="menu-sub menu-sub-accordion">
-        <div class="menu-item">
-            <!--begin:Menu link-->
-            <a class="menu-link" href="{{route('__tablename__.index')}}">
-                <span class="menu-bullet">
-                    <span class="bullet bullet-dot"></span>
-                </span>
-                <span class="menu-title">INDEX</span>
-            </a>
-            <!--end:Menu link-->
-            <!--begin:Menu link-->
-            <a class="menu-link" href="{{route('__tablename__.add')}}">
-                <span class="menu-bullet">
-                    <span class="bullet bullet-dot"></span>
-                </span>
-                <span class="menu-title">ADD</span>
-            </a>
-            <!--end:Menu link-->
-            <!--begin:Menu link-->
-            <a class="menu-link" href="{{route('__tablename__.edit')}}">
-                <span class="menu-bullet">
-                    <span class="bullet bullet-dot"></span>
-                </span>
-                <span class="menu-title">EDIT</span>
-            </a>
-            <!--end:Menu link-->
-        </div>
-    </div>
+        <span class="menu-title">__Plural__</span>
+    </a>
 </div>

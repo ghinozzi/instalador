@@ -241,6 +241,7 @@
     <!--end::Page Vendors Javascript-->
     <script src="{{ asset('assets/js/jquery.mask.js') }}"></script>
     <script src="{{ asset('assets/js/functions.js') }}"></script>
+    <script src="{{ asset('assets/js/instalador.js') }}"></script>
     <script src="{{ asset('assets/js/script.js') }}"></script>
 
     @yield('page-script')

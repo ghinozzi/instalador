@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use Illuminate\Support\Facades\DB;
+use App\Services\Utils;
 
 class InstaladorService
 {
@@ -56,29 +57,28 @@ class InstaladorService
         }
     }
 
-    static function generateViews($table, $campos){
-        echo "<br>Gerar view da tabela $table<br>";
-        foreach($campos as $campo){
-            echo "&nbsp&nbsp&nbsp&nbspGerar na view o campo: ".$campo."<br>";
+    static function generateViews($table,$campos,$singular,$plural){
+        Try{
+            $model = new NewView($table,$campos,$singular,$plural);
+
+            if($model->criarIndex()){
+                echo 'Index criado com sucesso';
+            }
+            /*
+            if($model->criarCreate()){
+                echo 'Create criado com sucesso';
+            }
+            if($model->criarEdit()){
+                echo 'Edit criado com sucesso';
+            }
+            */
+        }catch(\Exception $e){
+            dd($e->getMessage());
         }
-        echo "<br><br><br>";
-        //Gerar Index
-        /*
-        if(file_put_contents(base_path().'\resources\\'.$table."\index.blade.php", $codigoIndex)){
-            return true;
-        };
-        */
-
-        //Gerar create
-
-
-        //Gerar update
-
     }
 
     static function generateRoute($table){
         Try{
-            $datas = "";
             $route = new NewRoute($table);
 
             if($route->criar() == TRUE){
@@ -90,9 +90,9 @@ class InstaladorService
             dd($e->getMessage());
         }
     }
-    static function generateMenuLink($table){
+    static function generateMenuLink($table,$plural){
         Try{
-            $MenuLink = new NewMenuLink($table);
+            $MenuLink = new NewMenuLink($table,$plural);
 
             if($MenuLink->criar() == TRUE){
                 echo 'Menu-link criado com sucesso!<br>';
