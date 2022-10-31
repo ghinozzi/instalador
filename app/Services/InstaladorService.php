@@ -82,9 +82,9 @@ class InstaladorService
             $route = new NewRoute($table);
 
             if($route->criar() == TRUE){
-                echo 'Route criada com sucesso!';
+                echo 'Route criada com sucesso!<br>';
             }else{
-                echo 'Route já existe!';
+                echo 'Route já existe!<br>';
             }
         }catch(\Exception $e){
             dd($e->getMessage());
@@ -95,9 +95,9 @@ class InstaladorService
             $MenuLink = new NewMenuLink($table);
 
             if($MenuLink->criar() == TRUE){
-                echo 'Menu-link criado com sucesso!';
+                echo 'Menu-link criado com sucesso!<br>';
             }else{
-                echo 'Menu-link já existe!';
+                echo 'Menu-link já existe!<br>';
             }
         }catch(\Exception $e){
             dd($e->getMessage());

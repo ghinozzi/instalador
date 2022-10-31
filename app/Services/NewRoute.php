@@ -11,7 +11,7 @@ class NewRoute
         $this->tabela = ucfirst($tabela);
     }
     public function criar(){
-        $layoutRoute = file_get_contents(app_path().'\Generator\route\Route.php');
+        $layoutRoute = file_get_contents(app_path().'\GeneratorLayout\Route.php');
         $replaces = [
             'tablename'=> "".$this->tabela.""
         ];
@@ -21,7 +21,7 @@ class NewRoute
         $referenceLineInRoute = 'use Illuminate\Support\Facades\Route;';//coloca a nova referencia após essa referencia <---
         $ControllerUse = "use App\Http\Controllers\\".$this->tabela."Controller;";
 
-        if (mb_strpos($Routefile, $layoutRoute) == FALSE) {//verifica se as rotas ja existem
+        if (mb_strpos($Routefile, $layoutRoute) == FALSE) {
             $Routefile = $Routefile . $layoutRoute;
         }
 

@@ -11,7 +11,7 @@ class NewMenuLink
         $this->tabela = ucfirst($tabela);
     }
     public function criar(){
-        $codigo = file_get_contents(app_path().'\Generator\Views\menu\menu.php');
+        $codigo = file_get_contents(app_path().'\GeneratorLayout\views\menu.php');
         $replaces = [
             'tablename'=> "".$this->tabela.""
         ];
