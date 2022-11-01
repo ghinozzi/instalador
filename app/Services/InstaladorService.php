@@ -23,12 +23,29 @@ class InstaladorService
                     "Key" => $coluna->Key
                 ];
             }
-            $tables[] = [
+            $tables[$table] = [
                 "table"=>$table,
                 "column"=>$column
             ];
         }
         return $tables;
+    }
+
+    static function getForeignSchema(){
+        $schema = DB::select('SELECT DATABASE() AS db;');
+
+        $foreignKeys = DB::select("SELECT table_name AS 'table',  column_name AS  'fk',
+        referenced_table_name AS 'reftable', referenced_column_name  AS 'refpk'
+        FROM information_schema.key_column_usage
+        WHERE referenced_table_name IS NOT NULL
+        AND TABLE_SCHEMA='".$schema[0]->db."'");
+
+        $response = [];
+        foreach($foreignKeys as $f):
+            $response[$f->table][$f->fk] = $f;
+        endforeach;
+
+        return $response;
     }
 
     static function generateModel($table, $campos){

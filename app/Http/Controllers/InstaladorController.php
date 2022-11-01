@@ -11,9 +11,8 @@ class InstaladorController extends Controller
     public function index(){
 
         $tables = InstaladorService::getTablesColumns();
-
-        /* dd($tables); */
-        return view('instalador.index',compact('tables'));
+        $foreignKeys = InstaladorService::getForeignSchema();
+        return view('instalador.index',compact('tables','foreignKeys'));
     }
 
     //AJAX
@@ -57,9 +56,10 @@ class InstaladorController extends Controller
          //GeraRotas.
 
          //verificarFuncionamento
-        if(!empty($request->views) || !empty($request->controllers) || !empty($request->models)){
+        if(!empty($request->views)){
             $gerarRoutes = true;
             foreach($request->table as $table => $condition){
+                // if(in_array($table,$request->view))
                 if($condition){
                     InstaladorService::generateRoute($table);
                     InstaladorService::generateMenuLink($table,$request->plural);

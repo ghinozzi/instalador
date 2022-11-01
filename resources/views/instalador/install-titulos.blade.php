@@ -20,7 +20,7 @@
                         <label>{{ $column['name'] }}</label>
                         <input type="text" class='form-control'
                             name='table[{{ $table['table'] }}][{{ $column['name'] }}][title]'
-                            value="{{  $column['name'] }}">
+                            value="{{ucfirst($column['name'])}}">
                     </div>
                 @endforeach
             </div>

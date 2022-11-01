@@ -1,5 +1,5 @@
 <div class="accordion-item instalador-accordion">
-    <div class='sub-collapse' data-toggle="collapse" data-target="#{{$table['table']}}_lista">Configurar Lista</div>
+    <a  style='cursor:pointer' class='sub-collapse' data-toggle="collapse" data-target="#{{$table['table']}}_lista">Configurar Lista</a>
     <div id="{{$table['table']}}_lista" class="accordion-collapse collapse">
         <div class="accordion-body">
             <p><strong>Campos</strong></p>
@@ -9,8 +9,7 @@
                     <th>Tipo</th>
                     <th>Not Null</th>
                     <th>Lista</th>
-                    <th>Relação</th>
-                    <th>Campo Relação</th>
+                    <th>Referência</th>
                 </tr>
                 @foreach ($table['column'] as $column)
                     <tr>
@@ -20,39 +19,24 @@
                                 name="table[{{ $table['table'] }}][{{ $column['name'] }}][type]"
                                 class="select-type"
                                 data-type="{{ $table['table'] . '-' . $column['name'] }}">
-                                <option value="">Selecione</option>
-                                <option value="texto">Texto</option>
-                                <option value="data">Data</option>
-                                <option value="texto-longo">Texto Longo</option>
-                                <option value="editor_html">Editor Html</option>
-                                <option value="select">Select</option>
+                                @if(empty($foreignKeys[$table['table']][$column['name']]))
+                                {!!getOptionFromType($column['type'])!!}
+                                @else
+                                <option selected value="select">Select</option>
+                                @endif
                             </select>
                         </td>
-                        <td></td>
-                        <td></td>
+                        <td><input type="checkbox" value='1' name='table[{{ $table['table'] }}][{{ $column['name'] }}][notnull]'></td>
+                        <td><input type="checkbox" value='1' checked name='table[{{ $table['table'] }}][{{ $column['name'] }}][lista]'></td>
                         <td>
-                            <select
-                                name="table[{{ $table['table'] }}][{{ $column['name'] }}][belongsTo]"
-                                style="display: none;"
-                                class='select-table type-selected{{ $table['table'] . '-' . $column['name'] }}'
-                                data-column="{{ $table['table'] . '-' . $column['name'] }}">
-                                <option value="">Selecione uma tabela</option>
-                                @foreach ($tables as $optionTable)
-                                    @if ($table['table'] != $optionTable['table'])
-                                        <option value="{{ $optionTable['table'] }}">
-                                            {{ $optionTable['table'] }}</option>
-                                    @endif
-                                @endforeach
-                            </select>
-                        </td>
-                        <td>
-                            <select
-                                name="table[{{ $table['table'] }}][{{ $column['name'] }}][reference]"
-                                style="display: none;"
-                                class="type-selected{{ $table['table'] . '-' . $column['name'] }}"
-                                id='columns-{{ $table['table'] . '-' . $column['name'] }}'>
-                                <option value="">Selecione um campo</option>
-                            </select>
+                            @if(!empty($foreignKeys[$table['table']][$column['name']]))
+                                <select name="table[{{ $table['table'] }}][{{ $column['name'] }}][referencia]">
+                                    <option value="">Selecione:</option>
+                                    @foreach($tables[$foreignKeys[$table['table']][$column['name']]->reftable]['column'] as $campo)
+                                        <option value="{{$campo['name']}}">{{$campo['name']}}</option>
+                                    @endforeach
+                                </select>
+                            @endif
                         </td>
                     </tr>
                 @endforeach
