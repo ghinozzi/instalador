@@ -14,6 +14,6 @@
             </span>
             <!--end::Svg Icon-->
         </span>
-        <span class="menu-title">Usuários</span>
+        <span class="menu-title">usuarios</span>
     </a>
 </div>

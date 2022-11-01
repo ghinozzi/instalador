@@ -61,10 +61,10 @@ class InstaladorService
         }
     }
 
-    static function generateController($table){
+    static function generateController($table,$campos){
         Try{
             $datas = "";
-            $model = new NewController($table);
+            $model = new NewController($table,$campos);
 
             if($model->criar()){
                 echo 'Controller criado com sucesso';

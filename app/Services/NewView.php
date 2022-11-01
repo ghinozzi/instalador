@@ -85,10 +85,9 @@ class NewView
     }
 
     protected function getTableHeaders($fields){
-
         $headers = "";
         foreach($fields as $name => $f):
-            $field = new Field($name,$f['title']);
+            $field = new Field($name,$f);
             $headers.= $field->getTableHeader()."\n";
         endforeach;
 
@@ -97,7 +96,7 @@ class NewView
     protected function getTableFields($fields){
         $tableFields = "";
         foreach($fields as $name => $f):
-            $field = new Field($name,$f['title']);
+            $field = new Field($name,$f);
             $tableFields.= $field->getTableField()."\n";
         endforeach;
         return $tableFields;
@@ -106,7 +105,7 @@ class NewView
     protected function getFieldHtml($fields,$type = 'create',$nomeVariavel=null){
         $fieldHtml = "";
         foreach($fields as $name => $f):
-            $field = new Field($name,$f['title']);
+            $field = new Field($name,$f);
             $fieldHtml.= $field->getFieldHtml($type,$nomeVariavel)."\n";
         endforeach;
         return $fieldHtml;

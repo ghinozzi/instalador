@@ -40,7 +40,7 @@ class InstaladorController extends Controller
             $gerarRoutes = true;
             foreach($request->controllers as $table => $condition){
                 if($condition){
-                    InstaladorService::generateController($table);
+                    InstaladorService::generateController($table,$request->table[$table]);
                 }
             }
         }

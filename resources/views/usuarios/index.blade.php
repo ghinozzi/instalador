@@ -12,8 +12,8 @@
                             <!--begin::Header-->
                             <div class="card-header border-0 pt-5 pb-5">
                                 <div class="space-between">
-                                    <h3 class="card-title align-items-start flex-column">Usuários</h3>
-                                    <a href="{{route('usuarios.create')}}" class="btn btn-sm btn-primary"> Adicionar Usuário</a>
+                                    <h3 class="card-title align-items-start flex-column">usuarios</h3>
+                                    <a href="{{route('usuarios.create')}}" class="btn btn-sm btn-primary"> Adicionar usuarios</a>
                                 </div>
                             </div>
                             <hr>
@@ -26,14 +26,14 @@
                                         <!--begin::Table head-->
                                         <thead class='text-center'>
                                         <tr>
-                                            <th>id</th>
+                                            <th>Id</th>
 <th>Nome</th>
-<th>Tipo</th>
+<th>Tipo_usuario_id</th>
 <th>Email</th>
 <th>Senha</th>
-<th>created_at</th>
-<th>updated_at</th>
-<th>deleted_at</th>
+<th>Created_at</th>
+<th>Updated_at</th>
+<th>Deleted_at</th>
 
                                             <th>Ações</th>
                                         </tr>

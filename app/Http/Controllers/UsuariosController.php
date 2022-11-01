@@ -15,7 +15,10 @@ class UsuariosController extends Controller
 
     public function create()
     {
-        return view('usuarios.create');
+        $select_tipo_usuario_id = Usuarios::orderBy('id','asc')->get(); 
+
+
+        return view('usuarios.create',compact("select_tipo_usuario_id"));
     }
 
     public function store(Request $request)
