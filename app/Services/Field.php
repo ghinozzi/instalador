@@ -34,4 +34,17 @@ class Field
         return "<td>{{\$d->".$this->name."}}</td>";
     }
 
+    function getFieldHtml($type,$variavel = null){
+        $html = "";
+        $html .= "<div class='form-group pt-2'> \n";
+        $html .= "<label for='".$this->name."' class='fs-5 fw-bold mb-2'>".$this->title."</label> \n";
+        if($type == 'create'){
+            $html .= "<input type='text' name='".$this->name."' id='".$this->name."' class='form-control form-control-solid' placeholder='".$this->name."'> \n";
+        }else if($type == 'edit'){
+            $html .= "<input type='text' value='{{\$".$variavel."->".$this->name."}}' name='".$this->name."' id='".$this->name."' class='form-control form-control-solid' placeholder='".$this->name."'> \n";
+        }
+        $html .= "</div> \n";
+        return $html;
+    }
+
 }

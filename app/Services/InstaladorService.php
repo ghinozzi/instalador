@@ -64,14 +64,12 @@ class InstaladorService
             if($model->criarIndex()){
                 echo 'Index criado com sucesso';
             }
-            /*
             if($model->criarCreate()){
                 echo 'Create criado com sucesso';
             }
             if($model->criarEdit()){
                 echo 'Edit criado com sucesso';
             }
-            */
         }catch(\Exception $e){
             dd($e->getMessage());
         }

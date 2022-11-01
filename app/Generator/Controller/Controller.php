@@ -46,9 +46,9 @@ class __NomeModel__Controller extends Controller
         }
     }
 
-    public function destroy(__NomeModel__ $__NomeVariavel__)
+    public function destroy(Request $request)
     {
-        $__NomeVariavel__->delete();
+        $data = __NomeModel__::find($request->__NomeVariavel__)->delete();
         return true;
     }
 }

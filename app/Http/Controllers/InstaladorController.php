@@ -56,6 +56,7 @@ class InstaladorController extends Controller
         }
          //GeraRotas.
 
+         //verificarFuncionamento
         if(!empty($request->views) || !empty($request->controllers) || !empty($request->models)){
             $gerarRoutes = true;
             foreach($request->table as $table => $condition){

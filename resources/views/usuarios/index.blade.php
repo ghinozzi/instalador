@@ -13,7 +13,7 @@
                             <div class="card-header border-0 pt-5 pb-5">
                                 <div class="space-between">
                                     <h3 class="card-title align-items-start flex-column">Usuários</h3>
-                                    <a href="{{route('usuarios.create')}}" class="btn btn-primary"> Adicionar Usuário</a>
+                                    <a href="{{route('usuarios.create')}}" class="btn btn-sm btn-primary"> Adicionar Usuário</a>
                                 </div>
                             </div>
                             <hr>
@@ -24,13 +24,16 @@
                                     <!--begin::Table-->
                                     <table class="table crud align-middle gs-0 gy-5" id="table-list">
                                         <!--begin::Table head-->
-                                        <thead>
+                                        <thead class='text-center'>
                                         <tr>
                                             <th>id</th>
 <th>Nome</th>
 <th>Tipo</th>
 <th>Email</th>
 <th>Senha</th>
+<th>created_at</th>
+<th>updated_at</th>
+<th>deleted_at</th>
 
                                             <th>Ações</th>
                                         </tr>
@@ -45,8 +48,11 @@
 <td>{{$d->tipo_usuario_id}}</td>
 <td>{{$d->email}}</td>
 <td>{{$d->senha}}</td>
+<td>{{$d->created_at}}</td>
+<td>{{$d->updated_at}}</td>
+<td>{{$d->deleted_at}}</td>
 
-                                                <td>
+                                                <td class='table-actions'>
                                                     <a href="{{route('usuarios.edit',array('usuarios'=>$d->id))}}" class="btn btn-light">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                                             <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />

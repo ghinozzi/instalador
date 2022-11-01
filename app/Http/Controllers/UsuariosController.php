@@ -46,9 +46,9 @@ class UsuariosController extends Controller
         }
     }
 
-    public function destroy(Usuarios $usuarios)
+    public function destroy(Request $request)
     {
-        $usuarios->delete();
+        $data = Usuarios::find($request->usuarios)->delete();
         return true;
     }
 }

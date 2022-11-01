@@ -1,5 +1,5 @@
 <div class="menu-item
-    @if(Route::is('nametable.index') || Route::is('nametable.add') || Route::is('nametable.edit'))
+    @if(Route::is('TableName.index') || Route::is('TableName.add') || Route::is('TableName.edit'))
         show
     @endif
     ">

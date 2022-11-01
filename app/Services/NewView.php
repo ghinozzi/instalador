@@ -53,14 +53,15 @@ class NewView
         // Pega o codigo base do template
         $codigo = file_get_contents(app_path().'\Generator\Views\crud\create.blade.php');
         $replaces = [
-            'TituloSingular'=>'',
-            'Tabela'=>'',
-            'Campos'=>''
+            'TituloSingular'=>$this->singular,
+            'Tabela'=>$this->table,
+            'Campos'=>$this->getFieldHtml($this->fields)
         ];
         $codigo = Utils::replaceContents($codigo,$replaces);
 
         //cria o arquivo
-        if(file_put_contents(base_path()."\resources\views\\".$this->table."\create.blade.php", $codigo)){
+        $path = base_path().DIRECTORY_SEPARATOR."resources".DIRECTORY_SEPARATOR."views".DIRECTORY_SEPARATOR.$this->table.DIRECTORY_SEPARATOR."create.blade.php";
+        if(file_put_contents($path, $codigo)){
             return true;
         };
     }
@@ -68,17 +69,17 @@ class NewView
     public function criarEdit()
     {
         // Pega o codigo base do template
-        $codigo = file_get_contents(app_path().'\Generator\Views\crud\edit.blade.php');
+        $codigo = file_get_contents(app_path().DIRECTORY_SEPARATOR.'Generator'.DIRECTORY_SEPARATOR.'Views'.DIRECTORY_SEPARATOR.'crud'.DIRECTORY_SEPARATOR.'edit.blade.php');
         $replaces = [
-            'TituloSingular'=>'',
-            'Tabela'=>'',
-            'NomeVariavel'=>'',
-            'CamposUpdate'=>''
+            'TituloSingular'=>$this->singular,
+            'Tabela'=>$this->table,
+            'NomeVariavel'=>$this->nomeVariavel,
+            'CamposUpdate'=>$this->getFieldHtml($this->fields,'edit',$this->nomeVariavel)
         ];
         $codigo = Utils::replaceContents($codigo,$replaces);
 
         //cria o arquivo
-        if(file_put_contents(base_path()."\resources\views\\".$this->table."\index.edit.php", $codigo)){
+        if(file_put_contents(resource_path().DIRECTORY_SEPARATOR."views".DIRECTORY_SEPARATOR.$this->table.DIRECTORY_SEPARATOR."edit.blade.php", $codigo)){
             return true;
         };
     }
@@ -100,6 +101,15 @@ class NewView
             $tableFields.= $field->getTableField()."\n";
         endforeach;
         return $tableFields;
+    }
+
+    protected function getFieldHtml($fields,$type = 'create',$nomeVariavel=null){
+        $fieldHtml = "";
+        foreach($fields as $name => $f):
+            $field = new Field($name,$f['title']);
+            $fieldHtml.= $field->getFieldHtml($type,$nomeVariavel)."\n";
+        endforeach;
+        return $fieldHtml;
     }
 
 }

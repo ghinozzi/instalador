@@ -13,7 +13,7 @@
                             <div class="card-header border-0 pt-5 pb-5">
                                 <div class="space-between">
                                     <h3 class="card-title align-items-start flex-column">__TituloPlural__</h3>
-                                    <a href="{{route('__Tabela__.create')}}" class="btn btn-primary"> Adicionar __TituloSingular__</a>
+                                    <a href="{{route('__Tabela__.create')}}" class="btn btn-sm btn-primary"> Adicionar __TituloSingular__</a>
                                 </div>
                             </div>
                             <hr>
@@ -24,7 +24,7 @@
                                     <!--begin::Table-->
                                     <table class="table crud align-middle gs-0 gy-5" id="table-list">
                                         <!--begin::Table head-->
-                                        <thead>
+                                        <thead class='text-center'>
                                         <tr>
                                             __TableHeaders__
                                             <th>Ações</th>
@@ -36,7 +36,7 @@
                                         @foreach($data as $d)
                                             <tr>
                                                 __TableFields__
-                                                <td>
+                                                <td class='table-actions'>
                                                     <a href="{{route('__Tabela__.edit',array('__NomeVariavel__'=>$d->id))}}" class="btn btn-light">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="18px" height="18px" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                                             <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />

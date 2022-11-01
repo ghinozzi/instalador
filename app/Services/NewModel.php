@@ -40,7 +40,19 @@ class NewModel
     }
 
     function fillableFieldsFormat($fields){
+        $fields = $this->removeTimestamps($fields);
         return "'".implode("','",$fields)."'";
+    }
+
+    function removeTimestamps($array){
+        $timestamps = ['created_at','updated_at','deleted_at'];
+        foreach($timestamps as $t):
+            $key = array_search($t, $array);
+            if($key!==false){
+                unset($array[$key]);
+            }
+        endforeach;
+        return $array;
     }
 
 }

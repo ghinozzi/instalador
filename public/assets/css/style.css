@@ -5,3 +5,22 @@
 .instalador-accordion .instalador-item{
     cursor: pointer;
 }
+
+.btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.space-between{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.table-actions{
+    display: flex;
+    justify-content: center;
+}
+.table-actions a:first-child{
+    margin-right: 10px;
+}
