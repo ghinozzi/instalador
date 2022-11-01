@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\__NomeModel__;
 use Illuminate\Http\Request;
+__Uses__
 
 class __NomeModel__Controller extends Controller
 {

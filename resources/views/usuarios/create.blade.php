@@ -32,6 +32,11 @@
 
 <div class='form-group pt-2'> 
 <label for='tipo_usuario_id' class='fs-5 fw-bold mb-2'>Tipo_usuario_id</label> 
+<select   name='tipo_usuario_id' id='tipo_usuario_id' class='form-control form-control-solid'> 
+@foreach($select_tipo_usuario_id as $j) 
+<option value='{{$j->id}}'>{{$j->descricao}}</option> 
+@endforeach 
+</select> 
 </div> 
 
 <div class='form-group pt-2'> 

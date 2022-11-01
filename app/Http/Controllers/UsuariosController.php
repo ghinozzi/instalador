@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Usuarios;
 use Illuminate\Http\Request;
+use App\Models\Tipo_usuario;
+
 
 class UsuariosController extends Controller
 {
@@ -15,8 +17,7 @@ class UsuariosController extends Controller
 
     public function create()
     {
-        $select_tipo_usuario_id = Usuarios::orderBy('id','asc')->get(); 
-
+        $select_tipo_usuario_id = Tipo_usuario::orderBy('descricao','asc')->get();
 
         return view('usuarios.create',compact("select_tipo_usuario_id"));
     }

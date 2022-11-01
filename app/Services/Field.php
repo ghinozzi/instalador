@@ -60,6 +60,8 @@ class Field
                 $html .= "<option value='{{\$j->id}}'>{{\$j->".$this->referencia."}}</option> \n";
                 $html .= "@endforeach \n";
                 $html .= "</select> \n";
+
+                return $html;
                 break;
             case 'Anexo':
                 break;

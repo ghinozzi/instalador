@@ -32,7 +32,8 @@ class NewController
             'NomePasta'=> $this->nomePasta,
             'NomeVariavel'=> $this->nomeVariavel,
             'Relations'=> $relations['relations'],
-            'Compact' => $relations['compact']
+            'Compact' => $relations['compact'],
+            'Uses'=>$relations['uses']
         ];
         $codigo = Utils::replaceContents($codigo,$replaces);
         if(file_put_contents(app_path().'\Http\Controllers\\'.$this->nomeModel."Controller.php", $codigo)){
@@ -43,11 +44,13 @@ class NewController
         $foreignKeys = InstaladorService::getForeignSchema();
 
         $codigo = null;
+        $uses = null;
         $compact = [];
         if(!empty($foreignKeys[$this->tabela])){
             foreach($foreignKeys[$this->tabela] as $fk){
-                $codigo .= "\$select_".$fk->fk." = ".ucfirst($this->tabela)."::orderBy('".$this->campos[$fk->fk]['referencia']."','asc')->get(); \n";
+                $codigo .= "\$select_".$fk->fk." = ".ucfirst($fk->reftable)."::orderBy('".$this->campos[$fk->fk]['referencia']."','asc')->get(); \n";
                 $compact[] = "\"select_".$fk->fk."\"";
+                $uses .= "use App\\Models\\".ucfirst($fk->reftable)."; \n";
             }
         }
 
@@ -55,7 +58,7 @@ class NewController
             $compact = implode(',',$compact);
         }
 
-        return ['relations'=> $codigo,'compact'=>$compact];
+        return ['relations'=> $codigo,'compact'=>$compact,'uses'=>$uses];
     }
 
 
