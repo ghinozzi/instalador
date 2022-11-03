@@ -23,7 +23,7 @@ class NewController
 
     public function criar()
     {
-        $codigo = file_get_contents(app_path().'\Generator\Controller\Controller.php');
+        $codigo = file_get_contents(app_path().DIRECTORY_SEPARATOR.'Generator'.DIRECTORY_SEPARATOR.'Controller'.DIRECTORY_SEPARATOR.'Controller.php');
 
 
         $relations = $this->relations();
@@ -35,8 +35,8 @@ class NewController
             'Compact' => $relations['compact'],
             'Uses'=>$relations['uses']
         ];
-        $codigo = Utils::replaceContents($codigo,$replaces);
-        if(file_put_contents(app_path().'\Http\Controllers\\'.$this->nomeModel."Controller.php", $codigo)){
+        $codigo = Utils::replaceContents($codigo,$replaces);//erro aqui
+        if(file_put_contents(app_path().DIRECTORY_SEPARATOR.'Http'.DIRECTORY_SEPARATOR.'Controllers'.DIRECTORY_SEPARATOR.$this->nomeModel."Controller.php", $codigo)){
             return true;
         };
     }
@@ -56,6 +56,8 @@ class NewController
 
         if(!empty($compact)){
             $compact = implode(',',$compact);
+        }else{
+            $compact = "";
         }
 
         return ['relations'=> $codigo,'compact'=>$compact,'uses'=>$uses];

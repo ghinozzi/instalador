@@ -30,7 +30,7 @@ class NewView
     public function criarIndex()
     {
         // Pega o codigo base do template
-        $codigo = file_get_contents(app_path().'\Generator\Views\crud\index.blade.php');
+        $codigo = file_get_contents(app_path().DIRECTORY_SEPARATOR.'Generator'.DIRECTORY_SEPARATOR.'Views'.DIRECTORY_SEPARATOR.'crud'.DIRECTORY_SEPARATOR.'index.blade.php');
         $replaces = [
             'TituloPlural'=>$this->plural,
             'TituloSingular'=>$this->singular,
@@ -51,7 +51,7 @@ class NewView
     public function criarCreate()
     {
         // Pega o codigo base do template
-        $codigo = file_get_contents(app_path().'\Generator\Views\crud\create.blade.php');
+        $codigo = file_get_contents(app_path().DIRECTORY_SEPARATOR.'Generator'.DIRECTORY_SEPARATOR.'Views'.DIRECTORY_SEPARATOR.'crud'.DIRECTORY_SEPARATOR.'create.blade.php');
         $replaces = [
             'TituloSingular'=>$this->singular,
             'Tabela'=>$this->table,

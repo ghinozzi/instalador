@@ -67,7 +67,7 @@ class InstaladorService
             $model = new NewController($table,$campos);
 
             if($model->criar()){
-                echo 'Controller criado com sucesso';
+                echo 'Controller criado com sucesso<br>';
             }
         }catch(\Exception $e){
             dd($e->getMessage());
@@ -79,13 +79,13 @@ class InstaladorService
             $model = new NewView($table,$campos,$singular,$plural);
 
             if($model->criarIndex()){
-                echo 'Index criado com sucesso';
+                echo 'Index criado com sucesso<br>';
             }
             if($model->criarCreate()){
-                echo 'Create criado com sucesso';
+                echo 'Create criado com sucesso<br>';
             }
             if($model->criarEdit()){
-                echo 'Edit criado com sucesso';
+                echo 'Edit criado com sucesso<br>';
             }
         }catch(\Exception $e){
             dd($e->getMessage());
