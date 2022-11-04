@@ -1,0 +1,22 @@
+{
+    "name": "ghinozzi/instalador",
+    "autoload": {
+        "psr-4": {
+            "Ghinozzi\\Instalador\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "João Pedro Ghinozzi",
+            "email": "ghinozzi@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.0.1"
+    },
+    "extra":{
+        "laravel":{
+            "providers":["Ghinozzi\\Instalador\\Providers\\InstaladorServiceProvider"]
+        }
+    }
+}
