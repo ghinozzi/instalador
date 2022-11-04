@@ -30,8 +30,8 @@ class CrudRequirements extends Command
     {
         Try{
             //Gerando assets
-            $origem = app_path()."\Generator\assets";
-            $destino = public_path()."\assets";
+            $origem = app_path().DIRECTORY_SEPARATOR."Generator".DIRECTORY_SEPARATOR."assets";
+            $destino = public_path().DIRECTORY_SEPARATOR."assets";
 
             $mover = InstaladorFunctions::recursive_copy($origem,$destino);
             if($mover === true){

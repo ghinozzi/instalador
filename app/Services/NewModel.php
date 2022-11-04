@@ -21,7 +21,7 @@ class NewModel
 
     public function criar()
     {
-        $codigo = file_get_contents(app_path().'\Generator\Models\Model.php');
+        $codigo = file_get_contents(app_path().DIRECTORY_SEPARATOR.'Generator'.DIRECTORY_SEPARATOR.'Models'.DIRECTORY_SEPARATOR.'Model.php');
 
         $campos = $this->fillableFieldsFormat($this->campos);
         $replaces = [
@@ -33,7 +33,7 @@ class NewModel
 
         $codigo = Utils::replaceContents($codigo,$replaces);
 
-        if(file_put_contents(app_path().'\Models\\'.$this->nomeModel.".php", $codigo)){
+        if(file_put_contents(app_path().DIRECTORY_SEPARATOR.'Models'.DIRECTORY_SEPARATOR.$this->nomeModel.".php", $codigo)){
             return true;
         };
 

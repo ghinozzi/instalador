@@ -13,14 +13,14 @@ class NewRoute
         $this->nomeVariavel = strtolower($tabela);;
     }
     public function criar(){
-        $layoutRoute = file_get_contents(app_path().DIRECTORY_SEPARATOR.'GeneratorLayout'.DIRECTORY_SEPARATOR.'Route.php');
+        $layoutRoute = file_get_contents(app_path().DIRECTORY_SEPARATOR.'Generator'.DIRECTORY_SEPARATOR.'Route'.DIRECTORY_SEPARATOR.'Route.php');
         $replaces = [
             'TableName'=> $this->tabela,
             'ModelName'=> ucfirst($this->tabela),
             'NomeVariavel'=> $this->nomeVariavel
         ];
         $layoutRoute = Utils::replaceContents($layoutRoute,$replaces);
-        $routefile = file_get_contents(base_path().'\routes\web.php');
+        $routefile = file_get_contents(base_path().DIRECTORY_SEPARATOR.'routes'.DIRECTORY_SEPARATOR.'web.php');
         $referenceLineInRoute = 'use Illuminate\Support\Facades\Route;';//coloca a nova referencia após essa referencia <---
         $ControllerUse = "use App\Http\Controllers\\".ucfirst($this->tabela)."Controller;";
 
