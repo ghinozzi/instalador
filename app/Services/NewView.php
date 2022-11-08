@@ -12,14 +12,18 @@ class NewView
     protected $singular;
     protected $plural;
     protected $nomeVariavel;
+    protected $primary_key;
 
-    public function __construct($table,$fields,$singular,$plural)
+    public function __construct($table,$fields,$singular,$plural,$primary_key)
     {
         $this->table = $table;
-        $this->fields = $fields;
         $this->singular = $singular;
         $this->plural = $plural;
         $this->nomeVariavel = strtolower($table);
+        $this->primary_key = $primary_key;
+        $this->fields = $this->ignore_fields($fields);
+
+
 
         //verifica se existe a pasta
         if(!is_dir(base_path()."\\resources\\views\\".$this->table)){
@@ -27,6 +31,13 @@ class NewView
         }
     }
 
+    private function ignore_fields($fields){
+        $ignore_fields = [$this->primary_key,'created_at','updated_at','deleted_at'];
+        foreach($ignore_fields as $nameIgnore){
+            unset($fields[$nameIgnore]);
+        }
+        return $fields;
+    }
     public function criarIndex()
     {
         // Pega o codigo base do template
@@ -37,7 +48,8 @@ class NewView
             'Tabela'=> $this->table,
             'TableHeaders'=>$this->getTableHeaders($this->fields),
             'TableFields'=>$this->getTableFields($this->fields),
-            'NomeVariavel'=>$this->nomeVariavel
+            'NomeVariavel'=>$this->nomeVariavel,
+            'PrimaryKey'=>$this->primary_key
         ];
         $codigo = Utils::replaceContents($codigo,$replaces);
 
@@ -74,7 +86,8 @@ class NewView
             'TituloSingular'=>$this->singular,
             'Tabela'=>$this->table,
             'NomeVariavel'=>$this->nomeVariavel,
-            'CamposUpdate'=>$this->getFieldHtml($this->fields,'edit',$this->nomeVariavel)
+            'CamposUpdate'=>$this->getFieldHtml($this->fields,'edit',$this->nomeVariavel),
+            'PrimaryKey'=>$this->primary_key
         ];
         $codigo = Utils::replaceContents($codigo,$replaces);
 

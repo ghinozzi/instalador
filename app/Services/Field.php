@@ -56,9 +56,11 @@ class Field
                 break;
             case 'select':
                 $html = "<select ".$value."  name='".$this->name."' id='".$this->name."' class='form-control form-control-solid'> \n";
+                if(!empty($this->referencia)){
                 $html .= "@foreach(\$select_".$this->name." as \$j) \n";
                 $html .= "<option value='{{\$j->id}}'>{{\$j->".$this->referencia."}}</option> \n";
                 $html .= "@endforeach \n";
+                }
                 $html .= "</select> \n";
 
                 return $html;

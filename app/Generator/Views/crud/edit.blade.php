@@ -18,7 +18,7 @@
                             <!--end::Header-->
                             <!--begin::Body-->
                             <div class="card-body py-3 pb-5">
-                                <form action="{{route('__Tabela__.update',array('__NomeVariavel__'=>$__NomeVariavel__->id))}}" method="post">
+                                <form action="{{route('__Tabela__.update',array('__NomeVariavel__'=>$__NomeVariavel__->__PrimaryKey__))}}" method="post">
                                     @csrf
                                     {{ method_field('PUT') }}
                                     __CamposUpdate__

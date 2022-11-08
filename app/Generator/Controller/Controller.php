@@ -18,7 +18,7 @@ class __NomeModel__Controller extends Controller
     {
         __Relations__
 
-        return view('__NomePasta__.create',compact(__Compact__));
+        return view('__NomePasta__.create'__Compact__);
     }
 
     public function store(Request $request)

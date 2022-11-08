@@ -25,8 +25,8 @@ class NewMenuLink
         if (mb_strpos($menuLinks, $codigo) !== FALSE) {
             return FALSE;
         }else{
+            $codigo = $menuLinks . $codigo;
             if(file_put_contents(base_path().DIRECTORY_SEPARATOR.'resources'.DIRECTORY_SEPARATOR.'views'.DIRECTORY_SEPARATOR.'partials'.DIRECTORY_SEPARATOR.'menu-links.blade.php', $codigo)){
-                $codigo = $menuLinks . $codigo;
                 return TRUE;
             }else{
                 return FALSE;

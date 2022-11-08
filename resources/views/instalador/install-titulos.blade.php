@@ -4,11 +4,11 @@
         <div class="row pt-4">
             <div class="form-group col-md-4">
                 <label for="singular">Titulo Singular</label>
-                <input type="text" class='form-control' name='singular' value="{{ $table['table'] }}">
+                <input type="text" class='form-control' name='{{$table['table']}}[singular]' value="{{ $table['table'] }}">
             </div>
             <div class="form-group col-md-4">
                 <label for="plural">Titulo Plural</label>
-                <input type="text" class='form-control' name='plural' value="{{ $table['table'] }}">
+                <input type="text" class='form-control' name='{{$table['table']}}[plural]' value="{{ $table['table'] }}">
             </div>
         </div>
         <hr>

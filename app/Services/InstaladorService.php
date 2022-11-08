@@ -48,6 +48,12 @@ class InstaladorService
         return $response;
     }
 
+    static function getPrimaryKey($table){
+        $primary_key = DB::select("SELECT column_name  FROM information_schema.COLUMNS WHERE TABLE_SCHEMA='teste_instalador' AND column_key = 'PRI' AND table_name = '".$table."'");
+
+        return $primary_key[0]->column_name;
+    }
+
     static function generateModel($table, $campos){
         Try{
             $datas = "";
@@ -75,8 +81,8 @@ class InstaladorService
     }
 
     static function generateViews($table,$campos,$singular,$plural){
-        Try{
-            $model = new NewView($table,$campos,$singular,$plural);
+        try{
+            $model = new NewView($table,$campos,$singular,$plural,self::getPrimaryKey($table));
 
             if($model->criarIndex()){
                 echo 'Index criado com sucesso<br>';

@@ -48,14 +48,16 @@ class NewController
         $compact = [];
         if(!empty($foreignKeys[$this->tabela])){
             foreach($foreignKeys[$this->tabela] as $fk){
-                $codigo .= "\$select_".$fk->fk." = ".ucfirst($fk->reftable)."::orderBy('".$this->campos[$fk->fk]['referencia']."','asc')->get(); \n";
-                $compact[] = "\"select_".$fk->fk."\"";
-                $uses .= "use App\\Models\\".ucfirst($fk->reftable)."; \n";
+                if(!empty($this->campos[$fk->fk]['referencia'])){
+                    $codigo .= "\$select_".$fk->fk." = ".ucfirst($fk->reftable)."::orderBy('".$this->campos[$fk->fk]['referencia']."','asc')->get(); \n";
+                    $compact[] = "\"select_".$fk->fk."\"";
+                    $uses .= "use App\\Models\\".ucfirst($fk->reftable)."; \n";
+                }
             }
         }
 
         if(!empty($compact)){
-            $compact = implode(',',$compact);
+            $compact = ",compact(".implode(',',$compact).")";
         }else{
             $compact = "";
         }
