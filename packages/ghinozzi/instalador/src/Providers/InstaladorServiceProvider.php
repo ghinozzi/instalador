@@ -3,8 +3,6 @@
 namespace Ghinozzi\Instalador\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Illuminate\Foundation\Console\AboutCommand;
-use Ghinozzi\Instalador\Commands\Pokemon;
 
 class InstaladorServiceProvider extends ServiceProvider
 {
@@ -15,27 +13,30 @@ class InstaladorServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        AboutCommand::add('teste', fn () => ['Version' => '1.0.0']);
-        if($this->app->runningInConsole()){
-            $this->commands([Pokemon::class]);
+        if ($this->app->runningInConsole()) {
+            $this->commands([]);
         }
 
+        // Configs
+        $this->mergeConfigFrom(__DIR__ . '/../configs/instalador.php', 'instalador');
+
+        // Routes
+        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
+
+        // Views
+        $this->loadViewsFrom(__DIR__ . '/../views', 'instalador');
+
+        // Publish
+        $this->publishes([__DIR__ . '/../public/assets' => public_path('assets')], 'instalador-public');
+        $this->publishes([__DIR__ . '/../views' => resource_path('views/vendor/instalador')], 'instalador-views');
+
+
         // php artisan vendor:publish --tag=public --force
-        //Rotas da aplicacao 
-        //$this->loadRoutesFrom(__DIR__.'/../routes/web.php');
 
 
         //Migrations
         //$this->loadMigrationsFrom(__DIR__.'/../database/migrations');/
 
-        //views
-        // $this->loadViewsFrom(__DIR__.'/../resources/views', 'courier');
 
-        /*
-        assets 
-        this->publishes([
-        __DIR__.'/../public' => public_path('vendor/courier'),
-    ], 'public');
-        */
     }
 }

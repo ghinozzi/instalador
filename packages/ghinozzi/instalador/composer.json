@@ -3,7 +3,10 @@
     "autoload": {
         "psr-4": {
             "Ghinozzi\\Instalador\\": "src/"
-        }
+        },
+        "files": [
+            "./src/Helpers/Utils.php"
+        ]
     },
     "authors": [
         {
@@ -14,9 +17,11 @@
     "require": {
         "guzzlehttp/guzzle": "^7.0.1"
     },
-    "extra":{
-        "laravel":{
-            "providers":["Ghinozzi\\Instalador\\Providers\\InstaladorServiceProvider"]
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Ghinozzi\\Instalador\\Providers\\InstaladorServiceProvider"
+            ]
         }
     }
 }

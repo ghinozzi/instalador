@@ -18,12 +18,10 @@
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^6.1",
         "phpunit/phpunit": "^9.5.10",
-        "spatie/laravel-ignition": "^1.0"
+        "spatie/laravel-ignition": "^1.0",
+        "ghinozzi/instalador": "*"
     },
     "autoload": {
-        "files": [
-            "app/Helpers/Utils.php"
-        ],
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
@@ -53,9 +51,7 @@
     "extra": {
         "laravel": {
             "dont-discover": [],
-            "providers": [
-                "ghinozzi\\instalador\\src\\Providers\\InstaladorServiceProvider"
-            ]
+            "providers": []
         }
     },
     "config": {
@@ -66,6 +62,12 @@
             "pestphp/pest-plugin": true
         }
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./packages/ghinozzi/instalador"
+        }
+    ],
     "minimum-stability": "dev",
     "prefer-stable": true
 }
