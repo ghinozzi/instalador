@@ -80,6 +80,11 @@ class Field
                 return $html;
                 break;
             case 'Editor Html':
+                if ($pageType == 'edit') {
+                    $value = "{{\$" . $variavel . "->" . $this->name . "}}";
+                }
+                $html = "<textarea name='" . $this->name . "' id='" . $this->name . "' class='htmleditor'>" . $value . "</textarea> \n";
+                return $html;
                 break;
             case 'Data':
                 if ($pageType == 'edit') {

@@ -27,12 +27,14 @@
                                     <div class="col-md-3 instalador-item"><a class='sub-collapse' data-toggle="collapse" data-target="#{{ $table['table'] }}">{{$table['table'] }}</a></div>
                                     <div class="col-md-9">
                                         <div class='instalador-options'>
-                                            <input name="models[{{ $table['table'] }}]" type="checkbox"> <label
-                                                for="">Model</label>
-                                            <input name="controllers[{{ $table['table'] }}]" type="checkbox"> <label
-                                                for="">Controller</label>
-                                            <input name="views[{{ $table['table'] }}]" type="checkbox"> <label
-                                                for="">View</label>
+                                            <input name="models[{{ $table['table'] }}]" type="checkbox"> 
+                                            <label for="">Model</label>
+                                            <input name="controllers[{{ $table['table'] }}]" type="checkbox"> 
+                                            <label for="">Controller</label>
+                                            <input name="views[{{ $table['table'] }}]" type="checkbox"> 
+                                            <label for="">View</label>
+                                            <input name="menu[{{ $table['table'] }}]" type="checkbox"> 
+                                            <label for="">Menu</label>
                                         </div>
                                     </div>
                                 </div>

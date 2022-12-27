@@ -16,13 +16,14 @@ class NewMenuLink
     public function criar()
     {
         $codigo = file_get_contents(__DIR__ . '/../Generator/Views/menu.php');
+        
 
         $codigo = Utils::replaceContents($codigo, [
             'TableName' => $this->tabela,
             'Plural' => $this->plural
         ]);
 
-        $menuLinks = file_get_contents(__DIR__ . '/../views/partials/menu-links.blade.php');
+        $menuLinks = file_get_contents(resource_path('views/vendor/instalador/partials/menu-links.blade.php'));
 
         if (mb_strpos($menuLinks, $codigo) !== FALSE) {
             return false;

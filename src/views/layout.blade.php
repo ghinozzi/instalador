@@ -242,6 +242,8 @@
     <script src="{{ asset('assets/js/jquery.mask.js') }}"></script>
     <script src="{{ asset('assets/js/functions.js') }}"></script>
     <script src="{{ asset('assets/js/instalador.js') }}"></script>
+    <script src="{{ asset('assets/plugins/custom/tinymce/tinymce.bundle.js') }}"></script>
+    <script type="text/javascript"> const tinyuploadroute = "{{route('tinymce.upload')}}";</script>
     <script src="{{ asset('assets/js/script.js') }}"></script>
 
     @yield('page-script')
